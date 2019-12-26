@@ -1,8 +1,5 @@
-# Java EE on Azure Magic Mystery Show
+# WebLogic on Azure Linux Virtual Machines
 
-This fast-paced, demo-driven, entirely slide free session will show you the many ways of effectively deploying a Java EE application to Azure. We will start by deploying a local Java EE application to basic IaaS on Azure. We will then deploy the same application to a managed Azure PaaS. Finally we will deploy the application to Azure using Docker and Kubernetes. We will discuss the trade-offs of each approach on the way, offering guidelines for which approach might be best for your application on the cloud. At the end of the session, you will have all the demos on GitHub so you can explore them on your own.
+Microsoft and Oracle have partnered to provide a set of robust and up-to-date solutions for running WebLogic on Azure Linux virtual machines. These solutions and the associated guidance will allow Azure users to much more easily lift-and-shift WebLogic workloads to Azure. The solutions support simple use cases such as easily creating a single working WebLogic instance. They also support common use cases such as clustering, load-balancing as well as database connectivity.
 
-## Key Points
-* How to deploy a Java EE application on Azure using IaaS.
-* How to deploy a Java EE application on Azure using PaaS.
-* How to deploy a Java EE application on Azure using Docker and Kubernetes.
+This introductory session will overview these solutions including a demo. We will also cover the longer-term roadmap for WebLogic on Azure.
