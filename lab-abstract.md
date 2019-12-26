@@ -1,14 +1,5 @@
-# Java EE on Azure Hands-on Lab
+# WebLogic on Azure Linux Virtual Machines Workshop
 
-This hands-on lab will show you the many ways of effectively deploying a Java EE application to Azure. 
+Microsoft and Oracle have partnered to provide a set of robust and up-to-date solutions for running WebLogic on Azure Linux virtual machines. These solutions and the associated guidance will allow Azure users to much more easily lift-and-shift WebLogic workloads to Azure. The solutions support simple use cases such as easily creating a single working WebLogic instance. They also support common use cases such as clustering, load-balancing as well as database connectivity. In the future the solutions will also encompass use cases such as securing WebLogic using Azure Active Directory, consolidated logging using ELK and caching using Oracle Coherence.
 
-We will start by deploying a local Java EE application to basic IaaS on Azure. We will then deploy the same application to a managed 
-Azure PaaS. Finally we will deploy the application to Azure using Docker and Kubernetes. We will discuss the trade-offs of each approach on the way, 
-offering guidelines for which approach might be best for your application on the cloud.
-
-At the end of the lab, you will have first-hand exposure and be prepared to develop your own Java EE applications on Azure.
-
-## Key Points
-* How to deploy a Java EE application on Azure using IaaS.
-* How to deploy a Java EE application on Azure using PaaS.
-* How to deploy a Java EE application on Azure using Docker and Kubernetes.
+This hands-on workshop will give you a firsthand taste of the use cases supported by the solutions, using a representative but simple application. At the end of the session you will be prepared to confidently start lifting and shifting WebLogic workloads to Azure.
