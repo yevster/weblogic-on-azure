@@ -1,2 +1,2 @@
-# weblogic-on-azure
+# Weblogic on Azure
 WebLogic on Azure
