@@ -39,6 +39,9 @@ WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH
 set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.4.jar
 ```
 
+* Go to the 'Servers' panel, right click on the registered WebLogic instance and select Start.
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console.
+
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe. Accept the rest of the defaults and finish.
 * Once the application loads, you should do a full Maven build by going to Right click the application -> Run As -> Maven install.
 * It is now time to run the application. Go to Right click the application -> Run As -> Run on Server. Make sure to choose WebLogic as the server going forward. Just accept the defaults and wait for the application to finish running.
