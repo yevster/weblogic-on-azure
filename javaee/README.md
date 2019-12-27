@@ -40,7 +40,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 ```
 
 * Go to the 'Servers' panel, right click on the registered WebLogic instance and select Start.
-* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console.
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Click on Services -> Data Sources. Select New -> Generic Data Source. Enter the name as WebLogicCafeDB, JNDI name as java:/jdbc/WebLogicCafeDB and select the database type to be PostgreSQL. Click next. Accept the defaults and click next. On the next screen select 'Logging Last Resource' and click next. Enter the database name to be 'postgres'. Enter the host name to be 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com' (the suffix could be your first name such as "reza"). Enter the user name to be 'postgres@weblogic-cafe-db-`<your suffix>`' (the suffix could be your first name such as "reza"). Enter the password to be 'Secret123!'. Click next. On the next screen, accept the defaults and click next. Select AdminServer and click Finish.
 
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe. Accept the rest of the defaults and finish.
 * Once the application loads, you should do a full Maven build by going to Right click the application -> Run As -> Maven install.
