@@ -50,13 +50,13 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 
 The application is composed of:
 
-- **A RESTFul service*:** protocol://hostname:port/javaee-cafe/rest/coffees
+- **A RESTFul service*:** protocol://hostname:port/weblogic-cafe/rest/coffees
 
-	- **_GET by Id_**: protocol://hostname:port/javaee-cafe/rest/coffees/{id} 
-	- **_GET all_**: protocol://hostname:port/javaee-cafe/rest/coffees
-	- **_POST_** to add a new element at: protocol://hostname:port/javaee-cafe/rest/coffees
-	- **_DELETE_** to delete an element at: protocol://hostname:port/javaee-cafe/rest/coffees/{id}
+	- **_GET by Id_**: protocol://hostname:port/weblogic-cafe/rest/coffees/{id} 
+	- **_GET all_**: protocol://hostname:port/weblogic-cafe/rest/coffees
+	- **_POST_** to add a new element at: protocol://hostname:port/weblogic-cafe/rest/coffees
+	- **_DELETE_** to delete an element at: protocol://hostname:port/weblogic-cafe/rest/coffees/{id}
 
-- **A JSF Client:** protocol://hostname:port/javaee-cafe/index.xhtml
+- **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
 
 Feel free to take a minute to explore the application.
