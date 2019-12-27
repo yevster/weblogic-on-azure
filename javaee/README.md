@@ -5,18 +5,20 @@ We use Eclipse but you can use any Maven capable IDE such as NetBeans. We use Po
 
 ## Setup
 
-- Install JDK 8 (we used [AdoptOpenJDK OpenJDK 8 LTS/HotSpot](https://adoptopenjdk.net)).
-- Install the Eclipse IDE for Java EE Developers from [here](https://www.eclipse.org/downloads/packages/). 
-- Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
+* Install JDK 8 (we used [AdoptOpenJDK OpenJDK 8 LTS/HotSpot](https://adoptopenjdk.net)).
+* Install the Eclipse IDE for Java EE Developers from [here](https://www.eclipse.org/downloads/packages/). 
+* Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
+* You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
-## Database Creation
-The first step to getting the application running is getting the database up. The simplest way to actually do this is through Docker (we will be using Docker more extensively during our Kubernetes demo). Please follow the instructions below to get the database running.
-* Make sure Docker is running. Open a console.
-* Enter the following command and wait for the database to come up fully.
-```
-docker run -it --rm --name javaee-cafe-db -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
-```
-* The database is now ready. To stop it, simply press Control-C.
+## Start Managed PostgreSQL on Azure
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
+
+* Go to the [Azure portal](http://portal.azure.com).
+* Select Create a resource -> Databases -> Azure Database for PostgreSQL. Select a single server.
+* Specify the Server name to be weblogic-cafe-db-`<your suffix>` (the suffix could be your first name such as "reza"). Create a new resource group named weblogic-cafe-group-`<your suffix>` (the suffix could be your first name such as "reza"). Specify the login name to be postgres. Specify the password to be Secret123!. Hit 'Create'. It will take a moment for the database to deploy and be ready for use.
+* In the portal, go to 'All resources'. Find and click on weblogic-cafe-db-`<your suffix>`. Open the connection security panel. Enable access to Azure services, disable SSL connection enforcement and then hit Save.
+
+Once you are done exploring the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
