@@ -24,7 +24,7 @@ Once you are done exploring the demo, you should delete the weblogic-cafe-group-
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
-* Go to the 'Servers' panel, right click. Select New -> Server -> Red Hat JBoss Middleware -> JBoss AS, WildFly and EAP Server Tools. Click next. Accept the license agreement, click 'Finish'.
+* Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Tools. Click next. Accept the license agreement, click 'Finish'.
 * After the Eclipse WildFly adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> JBoss Community and select the latest WildFly version. Choose the defaults on the next screen and hit 'Next'. Select 'Download and install runtime..." and select the latest stable version of WildFly. Hit next, accept the license agreement. Hit next again. Select where you want WildFly downloaded and installed. Click 'Finish'. Keep the defaults and hit 'Finish'. WildFly is now setup in Eclipse.
 * Go to the directory where you have WildFly installed.
 * Create a new directory structure org/postgresql/main within /modules.
