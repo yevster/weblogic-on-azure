@@ -29,6 +29,11 @@ The next step is to get the application up and running. Follow the steps below t
 * Copy the Postgres driver to where you have WebLogic installed under server/lib. This file is located in the javaee/server directory where you downloaded the application code.
 * Depending on your platform, find the commExtEnv.sh or commExtEnv.cmd file in the oracle_common/common/bin directory where you have WebLogic installed. You will need to add the Postgres driver to the WebLogic classpath. The end result will look something like the following.
 
+#### commExtEnv.sh
+```
+WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH}${CLASSPATHSEP}${ANT_CONTRIB}/ant-contrib-1.0b3.jar${CLASSPATHSEP}${CAM_NODEMANAGER_JAR_PATH}${CLASSPATHSEP}${WL_HOME}/server/lib/postgresql-42.2.4.jar"
+```
+
 #### commExtEnv.cmd
 ```
 set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.4.jar
