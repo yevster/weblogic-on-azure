@@ -5,7 +5,7 @@ We use Eclipse but you can use any Maven capable IDE such as NetBeans. We use Po
 
 ## Setup
 
-* Install JDK 8 (we used [AdoptOpenJDK OpenJDK 8 LTS/HotSpot](https://adoptopenjdk.net)).
+* Install the [Oracle JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html). We used Java SE 13.0.1.
 * Install the Eclipse IDE for Java EE Developers from [here](https://www.eclipse.org/downloads/packages/).
 * Install WebLogic using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/fusionmiddleware-downloads.html).
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
