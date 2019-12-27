@@ -25,9 +25,7 @@ Once you are done exploring the demo, you should delete the weblogic-cafe-group-
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
 * Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Tools. Click next. Accept the license agreement, click 'Finish'.
-* After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed
-
-Click 'Finish'. Keep the defaults and hit 'Finish'. WildFly is now setup in Eclipse.
+* After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed, click next. For the domain directory, hit Create -> Create Domain. For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.
 * Go to the directory where you have WildFly installed.
 * Create a new directory structure org/postgresql/main within /modules.
 * Copy the Postgres driver and the corresponding module.xml to the newly created directory structure under main. These files are located in the javaee/server directory where you downloaded the application code.
