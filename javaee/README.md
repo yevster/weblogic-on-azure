@@ -26,6 +26,21 @@ The next step is to get the application up and running. Follow the steps below t
 * Start Eclipse.
 * Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Tools. Click next. Accept the license agreement, click 'Finish'.
 * After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed, click next. For the domain directory, hit Create -> Create Domain. For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.
+* Copy the Postgres driver to where you have WebLogic installed under server/lib. This file is located in the javaee/server directory where you downloaded the application code.
+* Depending on your platform, find the commExtEnv.sh or commExtEnv.cmd file in the oracle_common/common/bin directory where you have WebLogic installed. You will need to add the Postgres driver to the WebLogic classpath. The end result will look something like the following.
+
+#### commExtEnv.sh
+```
+WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH}${CLASSPATHSEP}${ANT_CONTRIB}/ant-contrib-1.0b3.jar${CLASSPATHSEP}${CAM_NODEMANAGER_JAR_PATH}${CLASSPATHSEP}${WL_HOME}/server/lib/postgresql-42.2.4.jar"
+```
+
+#### commExtEnv.cmd
+```
+set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.4.jar
+```
+
+* Go to the 'Servers' panel, right click on the registered WebLogic instance and select Start.
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Click on Services -> Data Sources. Select New -> Generic Data Source. Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. Accept the defaults and click next. On the next screen select 'Logging Last Resource' and click next. Enter the database name to be 'postgres'. Enter the host name to be 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com' (the suffix could be your first name such as "reza"). Enter the user name to be 'postgres@weblogic-cafe-db-`<your suffix>`' (the suffix could be your first name such as "reza"). Enter the password to be 'Secret123!'. Click next. On the next screen, accept the defaults and click next. Select AdminServer and click Finish.
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe. Accept the rest of the defaults and finish.
 * Once the application loads, you should do a full Maven build by going to Right click the application -> Run As -> Maven install.
 * It is now time to run the application. Go to Right click the application -> Run As -> Run on Server. Make sure to choose WebLogic as the server going forward. Just accept the defaults and wait for the application to finish running.
@@ -35,13 +50,13 @@ The next step is to get the application up and running. Follow the steps below t
 
 The application is composed of:
 
-- **A RESTFul service*:** protocol://hostname:port/javaee-cafe/rest/coffees
+- **A RESTFul service*:** protocol://hostname:port/weblogic-cafe/rest/coffees
 
-	- **_GET by Id_**: protocol://hostname:port/javaee-cafe/rest/coffees/{id} 
-	- **_GET all_**: protocol://hostname:port/javaee-cafe/rest/coffees
-	- **_POST_** to add a new element at: protocol://hostname:port/javaee-cafe/rest/coffees
-	- **_DELETE_** to delete an element at: protocol://hostname:port/javaee-cafe/rest/coffees/{id}
+	- **_GET by Id_**: protocol://hostname:port/weblogic-cafe/rest/coffees/{id} 
+	- **_GET all_**: protocol://hostname:port/weblogic-cafe/rest/coffees
+	- **_POST_** to add a new element at: protocol://hostname:port/weblogic-cafe/rest/coffees
+	- **_DELETE_** to delete an element at: protocol://hostname:port/weblogic-cafe/rest/coffees/{id}
 
-- **A JSF Client:** protocol://hostname:port/javaee-cafe/index.xhtml
+- **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
 
 Feel free to take a minute to explore the application.
