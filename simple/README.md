@@ -11,7 +11,7 @@ This demo shows how you can deploy a Java EE application to Azure using a simple
 ## Create the WebLogic Instance on Azure
 The next step is to get WebLogic up and running on a virtual machine. Follow the steps below to do so.
 * Go to the [Azure portal](http://portal.azure.com).
-* Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'. For the DNS label prefix, enter 'server'. 
+* Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'. Secret12345!.
 
 ## Start Managed PostgreSQL on Azure
 We will be using the fully managed PostgreSQL offering in Azure for this demo. We will set it up next. 
