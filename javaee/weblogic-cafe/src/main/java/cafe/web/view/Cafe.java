@@ -12,7 +12,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
@@ -34,7 +33,6 @@ public class Cafe implements Serializable {
 	private transient Client client;
 
 	@NotNull
-	@NotEmpty
 	protected String name;
 	@NotNull
 	protected Double price;
@@ -70,7 +68,7 @@ public class Cafe implements Serializable {
 			baseUri = FacesContext.getCurrentInstance().getExternalContext().getRequestScheme() + "://"
 					+ inetAddress.getHostName() + ":"
 					+ FacesContext.getCurrentInstance().getExternalContext().getRequestServerPort()
-					+ "/javaee-cafe/rest/coffees";
+					+ "/weblogic-cafe/rest/coffees";
 			this.client = ClientBuilder.newClient();
 			this.getAllCoffees();
 		} catch (IllegalArgumentException | NullPointerException | WebApplicationException | UnknownHostException ex) {
@@ -80,14 +78,14 @@ public class Cafe implements Serializable {
 	}
 
 	private void getAllCoffees() {
-		this.coffeeList = this.client.target(this.baseUri).path("/").request(MediaType.APPLICATION_JSON)
+		this.coffeeList = this.client.target(this.baseUri).path("/").request(MediaType.APPLICATION_XML)
 				.get(new GenericType<List<Coffee>>() {
 				});
 	}
 
 	public void addCoffee() {
 		Coffee coffee = new Coffee(this.name, this.price);
-		this.client.target(baseUri).request(MediaType.APPLICATION_JSON).post(Entity.json(coffee));
+		this.client.target(baseUri).request(MediaType.APPLICATION_XML).post(Entity.json(coffee));
 		this.name = null;
 		this.price = null;
 		this.getAllCoffees();

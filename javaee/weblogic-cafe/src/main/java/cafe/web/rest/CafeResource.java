@@ -31,13 +31,13 @@ public class CafeResource {
 	private CafeRepository cafeRepository;
 
 	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML })
 	public List<Coffee> getAllCoffees() {
 		return this.cafeRepository.getAllCoffees();
 	}
 
 	@POST
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Consumes({ MediaType.APPLICATION_XML })
 	public Response createCoffee(Coffee coffee) {
 		try {
 			coffee = this.cafeRepository.persistCoffee(coffee);
@@ -50,7 +50,7 @@ public class CafeResource {
 
 	@GET
 	@Path("{id}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	@Produces({ MediaType.APPLICATION_XML })
 	public Coffee getCoffeeById(@PathParam("id") Long coffeeId) {
 		return this.cafeRepository.findCoffeeById(coffeeId);
 	}
