@@ -85,7 +85,7 @@ public class Cafe implements Serializable {
 
 	public void addCoffee() {
 		Coffee coffee = new Coffee(this.name, this.price);
-		this.client.target(baseUri).request(MediaType.APPLICATION_XML).post(Entity.json(coffee));
+		this.client.target(baseUri).request(MediaType.APPLICATION_XML).post(Entity.xml(coffee));
 		this.name = null;
 		this.price = null;
 		this.getAllCoffees();

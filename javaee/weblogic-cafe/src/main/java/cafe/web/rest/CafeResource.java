@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.persistence.PersistenceException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -23,11 +24,12 @@ import cafe.model.CafeRepository;
 import cafe.model.entity.Coffee;
 
 @Path("coffees")
+@Stateless
 public class CafeResource {
 
 	private static final Logger logger = Logger.getLogger(MethodHandles.lookup().lookupClass().getName());
 
-	@Inject
+	@EJB
 	private CafeRepository cafeRepository;
 
 	@GET
