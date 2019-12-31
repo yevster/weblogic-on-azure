@@ -1,7 +1,5 @@
-# Basic Java EE CRUD Application
-This is the basic Java EE 7 application used throughout the WebLogic on Azure demos. It is a simple CRUD application. It uses Maven and Java EE 7 (JAX-RS, EJB, CDI, JPA, JSF, Bean Validation).
-
-We use Eclipse but you can use any Maven capable IDE such as NetBeans. We use Postgres but you can use any relational database such as MySQL or SQL Server.
+# Deploying a Java EE Application on Azure Using a Single WebLogic Virtual Machine Instance
+This demo shows how you can deploy a Java EE application to Azure using a simple instance of WebLogic using a marketplace solution. The following is how you run the demo.
 
 ## Setup
 
