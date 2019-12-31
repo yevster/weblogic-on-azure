@@ -21,6 +21,7 @@ Once you are done exploring the demo, you should delete the weblogic-cafe-group-
 ## Create the WebLogic Instance on Azure
 The next step is to get WebLogic up and running on a virtual machine. Follow the steps below to do so.
 * Go to the [Azure portal](http://portal.azure.com).
+* Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'. 
 
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
