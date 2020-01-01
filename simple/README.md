@@ -13,7 +13,7 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
 * Go to the [Azure portal](http://portal.azure.com).
 * Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'.
 * For the basics, just accept the defaults. Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` (the suffix could be your first name such as "reza"). Hit OK. Choose the default for the virtual machine size and hit OK. For the virtual machine and weblogic admin passwords, enter 'Secret123456'. Enter your OTN/Oracle.com username and password (you can create an account for free). Click OK. On the summary, click OK. On the final screen, click Create.
-* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://<admin server DNS name>:7001/console successfully.
+* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully.
 
 ## Start Managed PostgreSQL on Azure
 We will be using the fully managed PostgreSQL offering in Azure for this demo. We will set it up next. 
