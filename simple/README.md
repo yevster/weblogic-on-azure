@@ -15,6 +15,8 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
 * For the basics, just accept the defaults. Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` (the suffix could be your first name such as "reza"). Hit OK. Choose the default for the virtual machine size and hit OK. For the virtual machine and weblogic admin passwords, enter 'Secret123456'. Enter your OTN/Oracle.com username and password (you can create an account for free). Click OK. On the summary, click OK. On the final screen, click Create.
 * It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully.
 
+Once you are done exploring the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+
 ## Start Managed PostgreSQL on Azure
 We will be using the fully managed PostgreSQL offering in Azure for this demo. We will set it up next. 
 
@@ -22,8 +24,6 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. W
 * Select Create a resource -> Databases -> Azure Database for PostgreSQL. Select a single server.
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>` (the suffix could be your first name such as "reza"). Create a new resource group named weblogic-cafe-group-`<your suffix>` (the suffix could be your first name such as "reza"). Specify the login name to be postgres. Specify the password to be Secret123!. Hit 'Create'. It will take a moment for the database to deploy and be ready for use.
 * In the portal, go to 'All resources'. Find and click on weblogic-cafe-db-`<your suffix>`. Open the connection security panel. Enable access to Azure services and disable SSL connection enforcement. Hit Save.
-
-Once you are done exploring the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
