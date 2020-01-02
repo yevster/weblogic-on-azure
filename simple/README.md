@@ -26,6 +26,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. W
 * In the portal, go to 'All resources'. Find and click on weblogic-cafe-db-`<your suffix>`. Open the connection security panel. Enable access to Azure services and disable SSL connection enforcement. Hit Save.
 * In the portal, go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. Log onto http://`<admin server DNS name>`:7001/console using "weblogic" and "Secret123456".
 * Click on 'Lock and Edit'. Click on Services -> Data Sources. Select New -> Generic Data Source. Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. Accept the defaults and click next. On the next screen select 'Logging Last Resource' and click next. Enter the database name to be 'postgres'. Enter the host name to be 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com' (the suffix could be your first name such as "reza"). Enter the user name to be 'postgres@weblogic-cafe-db-`<your suffix>`' (the suffix could be your first name such as "reza"). Enter the password to be 'Secret123!'. Click next. On the next screen, accept the defaults and click next. Select 'admin' and click Finish.
+* Once the data source is configured, click 'Activate Changes'.
 
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
