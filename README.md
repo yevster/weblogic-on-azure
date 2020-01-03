@@ -6,5 +6,6 @@ The basic Java EE application used throughout is in the [javaee](/javaee) folder
 The scenarios demonstrated include:
 
 * Deploying a Java EE application on Azure using a simple instance of WebLogic using a marketplace solution. The [simple](/simple) folder shows how this is done.
+* Deploying a Java EE application on Azure into a WebLogic cluster using a marketplace solution. The [cluster](/cluster) folder shows how this is done.
 
 The demos use Java EE 7, Maven, Eclipse and PostgreSQL.
