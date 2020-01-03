@@ -33,20 +33,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. W
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
 * Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Tools. Click next. Accept the license agreement, click 'Finish'.
-* After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed, click next. For the domain directory, hit Create -> Create Domain. For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.
-* Copy the Postgres driver to where you have WebLogic installed under server/lib. This file is located in the javaee/server directory where you downloaded the application code.
-* Depending on your platform, find the commExtEnv.sh or commExtEnv.cmd file in the oracle_common/common/bin directory where you have WebLogic installed. You will need to add the Postgres driver to the WebLogic classpath. The end result will look something like the following.
-
-#### commExtEnv.sh
-```
-WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH}${CLASSPATHSEP}${ANT_CONTRIB}/ant-contrib-1.0b3.jar${CLASSPATHSEP}${CAM_NODEMANAGER_JAR_PATH}${CLASSPATHSEP}${WL_HOME}/server/lib/postgresql-42.2.4.jar"
-```
-
-#### commExtEnv.cmd
-```
-set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.4.jar
-```
-
+* After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed, click next. Choose remote, for the remote host enter the admin server DNS name on Azure, enter the WebLogic admin username/password and hit 'Finish'.
 * Go to the 'Servers' panel, right click on the registered WebLogic instance and select Start.
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe. Accept the rest of the defaults and finish.
 * Once the application loads, you should do a full Maven build by going to Right click the application -> Run As -> Maven install.
