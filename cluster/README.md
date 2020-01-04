@@ -2,17 +2,16 @@
 This demo shows how you can deploy a Java EE application to Azure into a WebLogic cluster using a marketplace solution. The following is how you run the demo.
 
 ## Setup
-
 * Install the latest version of Oracle JDK 8 (we used [8u231](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
 * Install the Eclipse IDE for Java EE Developers from [here](https://www.eclipse.org/downloads/packages/).
 * Install WebLogic 12.2.1.3 using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html).
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
-## Create the WebLogic Instance on Azure
-The next step is to get WebLogic up and running on a virtual machine. Follow the steps below to do so.
+## Create the WebLogic Cluster on Azure
+The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
 * Go to the [Azure portal](http://portal.azure.com).
-* Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'.
+* Click 'Create a resource'. In the search box, enter 'weblogic'. Select 'Oracle WebLogic Server 12.2.1.3 Cluster'. Hit 'Create'.
 * For the basics, just accept the defaults. Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` (the suffix could be your first name such as "reza"). Hit OK. Choose the default for the virtual machine size and hit OK. For the virtual machine and weblogic admin passwords, enter 'Secret123456'. Enter your OTN/Oracle.com username and password (you can create an account for free). Click OK. On the summary, click OK. On the final screen, click Create.
 * It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully.
 
