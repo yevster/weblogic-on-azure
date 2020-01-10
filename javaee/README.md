@@ -171,3 +171,5 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 - **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
 
 Feel free to take a minute to explore the application.
+
+When you are done exploring, it's time to deploy the demo to azure.  Return to [home of this repository](../README.md).
