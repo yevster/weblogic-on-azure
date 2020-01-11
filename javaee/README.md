@@ -67,6 +67,9 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 ```
 
 * Go to the 'Servers' panel, secondary click on the registered WebLogic instance and select Start.  If the server does not start, put aside this workshop and troubleshoot why the server did not start.  Once the server is successfully started from Eclipse, you may continue.
+
+### Connect WebLogic to the PostgreSQL Server
+
 * Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
    * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
@@ -78,12 +81,13 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
    * Enter the password as 'Secret123!'. Click next. 
    * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer and click Finish.
+   * On the "Select Targets" screen, select AdminServer or admin and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
    * Test the connection.   
       * In the "Data Sources" pane, click "WebLogicCafeDB".
       * Click Monitoring -> Testing
-      * Select AdminServer and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
+      * Select AdminServer or admin and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
    
+### Open weblogic-cafe in the IDE
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.
 * Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
 * Accept the rest of the defaults and click "finish".

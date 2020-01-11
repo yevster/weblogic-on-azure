@@ -21,26 +21,38 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
    * Click OK. 
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the Summary blade, click OK. On the final screen, click Create.
-* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully.
+* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
+* Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
-Once you are done exploring the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+Once you are done exploring this aspect of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
 ## Configure Managed PostgreSQL
 
 We will be using the same fully managed PostgreSQL we configured in the [local demo](../javaee/README.md).  Please make sure to obtain the configuration strings from when you executed that part of the demo.
 
-* In the portal, go to 'All resources'. Find and click on adminServerVM. Copy the DNS name for the virtual machine. Log onto http://`<admin server DNS name>`:7001/console using "weblogic" and "Secret123456".
-* Click on 'Lock and Edit'. Click on Services -> Data Sources. Select New -> Generic Data Source. Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. Accept the defaults and click next. On the next screen select 'Logging Last Resource' and click next. Enter the database name to be 'postgres'. Enter the host name to be 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com' (the suffix could be your first name such as "reza"). Enter the user name to be 'postgres@weblogic-cafe-db-`<your suffix>`' (the suffix could be your first name such as "reza"). Enter the password to be 'Secret123!'. Click next. On the next screen, accept the defaults and click next. Select 'admin' and click Finish.
-* Once the data source is configured, click 'Activate Changes'.
+* Log in to the WebLogic console as shown in the preceding step
+* Click on 'Lock and Edit'. 
+* Follow the same steps as in the local setup for [Connect WebLogic to the PostgreSQL Server](../javaee/README.md#connect-weblogic-to-the-postgresql-server).  Return to these steps after you have successfully tested the datasource.
 
 ## Running the Application
-The next step is to get the application up and running. Follow the steps below to do so.
+The next step is to get the application up and running. These steps assume you have already connected Eclipse to the locally running WebLogic Server.
+
 * Start Eclipse.
-* Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Tools. Click next. Accept the license agreement, click 'Finish'.
-* After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. Choose the defaults and hit 'Next'. Enter where you have WebLogic and Oracle JDK installed, click next. Choose remote, for the remote host enter the admin server DNS name on Azure, enter the WebLogic admin username/password and hit 'Finish'.
-* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe. Accept the rest of the defaults and finish.
-* Once the application loads, you should do a full Maven build by going to Right click the application -> Run As -> Maven install.
-* It is now time to run the application. Right click the application -> Run As -> Run on Server. Make sure to choose remote WebLogic as the server going forward. Just accept the defaults and wait for the application to finish running.
+* Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. 
+* For "Server's host name" use the hostname `<admin server DNS name>`.
+* Click next.
+* Choose remote, for the remote host enter `<admin server DNS name>`
+* Enter the WebLogic admin username/password from above.
+* Click "Test connection".  If "Test connection succeeded!" appears, click Ok and you may continue.  Otherwise, troubleshoot and resolve the reason for the connection failure.
+* 'Finish'.
+* You have already built opened the application and built it locally in the IDE when you executed the [local demo](../javaee/README.md).
+
+### Deploying the Application
+Ensure that the deployment action from Eclipse will target the WebLogic Server running on Azure.
+* Secondary click on the weblogic-cafe in the Project Explorer and choose Properties.
+* Click on Server in the left navigation pane.
+* You should see your local and remote WebLogic servers.  Select the remote one and choose Apply and Close.
+* Secondary click on weblogic-cafe in the Prjoect Explorer and choose Run As -> Run on Server.
 * Once the application runs, Eclise will open it up in a browser. The application is available at http://`<admin server DNS name>`:7001/weblogic-cafe.
 
 ## Content
@@ -53,6 +65,51 @@ The application is composed of:
 	- **_GET all_**: protocol://hostname:port/weblogic-cafe/rest/coffees
 	- **_POST_** to add a new element at: protocol://hostname:port/weblogic-cafe/rest/coffees
 	- **_DELETE_** to delete an element at: protocol://hostname:port/weblogic-cafe/rest/coffees/{id}
+    
+    
+Some sample interactions:
+
+```
+curl --verbose http://wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001/weblogic-cafe/rest/coffees
+*   Trying 40.121.58.67...
+* TCP_NODELAY set
+* Connected to wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com (40.121.58.67) port 7001 (#0)
+> GET /weblogic-cafe/rest/coffees HTTP/1.1
+> Host: wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Date: Sat, 11 Jan 2020 01:10:00 GMT
+< Content-Length: 335
+< Content-Type: application/xml
+< X-ORACLE-DMS-ECID: 4f2101e9-b8c9-4e76-a6eb-22bd86e0edfc-00000022
+< X-ORACLE-DMS-RID: 0
+<
+* Connection #0 to host wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com left intact
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><coffees><coffee><id>1</id><name>Strong</name><price>5.0</price></coffee><coffee><id>2</id><name>Weak</name><price>0.25</price></coffee><coffee><id>200</id><name>Medium</name><price>5.0</price></coffee><coffee><id>202</id><name>Medium 2</name><price>5.0</price></coffee></coffees>* Closing connection 0
+
+curl --verbose http://wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001/weblogic-cafe/rest/coffees/1
+*   Trying 40.121.58.67...
+* TCP_NODELAY set
+* Connected to wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com (40.121.58.67) port 7001 (#0)
+> GET /weblogic-cafe/rest/coffees/1 HTTP/1.1
+> Host: wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Date: Sat, 11 Jan 2020 01:10:44 GMT
+< Content-Length: 102
+< Content-Type: application/xml
+< X-ORACLE-DMS-ECID: 4f2101e9-b8c9-4e76-a6eb-22bd86e0edfc-00000023
+< X-ORACLE-DMS-RID: 0
+<
+* Connection #0 to host wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com left intact
+<?xml version="1.0" encoding="UTF-8"?><coffee><id>1</id><name>Strong</name><price>5.0</price></coffee>* Closing connection 0
+
+```
+    
 
 - **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
 
