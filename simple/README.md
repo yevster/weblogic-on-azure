@@ -108,6 +108,36 @@ curl --verbose http://wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001/
 * Connection #0 to host wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com left intact
 <?xml version="1.0" encoding="UTF-8"?><coffee><id>1</id><name>Strong</name><price>5.0</price></coffee>* Closing connection 0
 
+cat medium.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<coffee>
+  <id>207</id>
+  <name>Medium 7</name>
+  <price>7.0</price>
+</coffee>
+
+curl --verbose -X POST -d @medium.xml http://wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001/weblogic-cafe/rest/coffees --header "Content-Type: application/xml"
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com (::1) port 7001 (#0)
+> POST /weblogic-cafe/rest/coffees HTTP/1.1
+> Host: wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001
+> User-Agent: curl/7.64.1
+> Accept: */*
+> Content-Type: application/xml
+> Content-Length: 112
+>
+* upload completely sent off: 112 out of 112 bytes
+< HTTP/1.1 201 Created
+< Date: Mon, 13 Jan 2020 19:59:14 GMT
+< Location: http://wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com:7001/weblogic-cafe/rest/coffees/207
+< Content-Length: 0
+< X-ORACLE-DMS-ECID: 6b7bc556-c060-46b0-bdd6-f3b5c95614bd-00000041
+< X-ORACLE-DMS-RID: 0
+<
+* Connection #0 to host wls-3eb5405ea2-admindomain.eastus.cloudapp.azure.com left intact
+* Closing connection 0
 ```
     
 

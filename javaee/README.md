@@ -168,7 +168,7 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 * upload completely sent off: 104 out of 104 bytes
 < HTTP/1.1 201 Created
 < Date: Fri, 10 Jan 2020 22:17:55 GMT
-< Location: http://localhost:7001/200
+< Location: http://localhost:7001/weblogic-cafe/rest/coffees/200
 < Content-Length: 0
 < X-ORACLE-DMS-ECID: 89fd1d3f-df20-4336-9f81-f1edc0ccab49-00000029
 < X-ORACLE-DMS-RID: 0
