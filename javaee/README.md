@@ -45,7 +45,8 @@ Once you are done exploring all aspects of the demo (local and on Azure), you sh
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
-* Go to the 'Servers' panel, secondary click. Select New -> Server -> Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
+* Go to the 'Servers' panel, secondary click. Select New -> Server
+* Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
 * After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, secondary click. 
    * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
    * Choose the defaults and hit 'Next'. 
@@ -73,7 +74,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 * Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
    * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
-   * Accept the defaults and click next. 
+   * Accept the defaults and click next.  Do not click Finish, even though you could do so.
    * On the next screen select 'Logging Last Resource' and click next. 
    * Enter the database name to be 'postgres'. 
    * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
@@ -81,14 +82,14 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
    * Enter the password as 'Secret123!'. Click next. 
    * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer or admin and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
+   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
    * Test the connection.   
       * In the "Data Sources" pane, click "WebLogicCafeDB".
       * Click Monitoring -> Testing
-      * Select AdminServer or admin and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
+      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
    
 ### Open weblogic-cafe in the IDE
-* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.
+* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
 * Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
 * Accept the rest of the defaults and click "finish".
 * Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.

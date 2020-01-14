@@ -38,7 +38,7 @@ We will be using the same fully managed PostgreSQL we configured in the [local d
 The next step is to get the application up and running. These steps assume you have already connected Eclipse to the locally running WebLogic Server.
 
 * Start Eclipse.
-* Go to the 'Servers' panel, right click. Select New -> Server -> Oracle -> Oracle WebLogic Server. 
+* Go to the 'Servers' panel, secondary click. Select New -> Server -> Oracle -> Oracle WebLogic Server. 
 * For "Server's host name" use the hostname `<admin server DNS name>`.
 * Click next.
 * Choose remote, for the remote host enter `<admin server DNS name>`
