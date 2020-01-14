@@ -3,7 +3,40 @@ This demo shows how you can deploy a Java EE application to Azure into a WebLogi
 
 ## Setup
 
-* This demo assumes you have successfully executed the steps in the [local portion of the demo](../javaee/README.md).
+* Install the latest version of Oracle JDK 8 (we used [8u231](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
+* Install the Eclipse IDE for Enterprise Java Developers from [here](https://www.eclipse.org/downloads/packages/).
+* Install WebLogic 12.2.1.3 using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html). You need this locally even if you are not running WebLogic locally because the Eclipse WebLogic deployment support needs it.
+* Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
+* You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
+
+## Start Managed PostgreSQL on Azure
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
+
+* Go to the [Azure portal](http://portal.azure.com).
+* The steps in this section use `<your suffix>`.  The suffix could be your first name such as "reza".  It should be short and reasonably unique.
+* Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
+* In "Resource group" select "Create new" and enter weblogic-cafe-group-`<your suffix>`
+* Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
+* Specify the Admin username to be postgres. 
+* Specify the Password to be Secret123!. 
+* Specify the location to be a location close to you.
+* Leave the Version at its default.
+* In Compute + Storage click "Configure Server" then choose Basic.
+   * Set vCore to the minimum.
+   * Set Storage to the minimum.
+   * Click 'OK'
+* Hit 'Review+create' then 'Create'. It will take a moment for the database to deploy and be ready for use.
+* In the portal, go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
+* Find and click on weblogic-cafe-db-`<your suffix>`. 
+* Under Settings, open the connection security panel.
+   * Toggle "Allow access to Azure services" to "on"
+   * Toggle "Disable SSL connection enforcement" to "off". 
+   * Hit Add client IP. This allows connection to the database from the IP you are currently using to access Azure.  As a precaution, verify the IP entered is actually your IP.  You can do this by googling "what is my ip".  Hit Save.
+
+We will use this same database in the other portions of the demo
+([javaee](../javaee/README.md) and [simple](../simple/README.md)).
+Please save aside the configuration strings so you can reference them
+when installing WebLogic on Azure
 
 ## Create the WebLogic Cluster on Azure
 The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
@@ -24,21 +57,49 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
-Once you are done exploring this aspect of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+## Cleaning Up
 
-## Configure Managed PostgreSQL
+Once you are done exploring all aspects of the demo (local and remote), you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+
+### Connect WebLogic to the PostgreSQL Server
+
 We will be using the fully managed PostgreSQL offering in Azure for this demo. We will set it up next. 
 
 We will be using the same fully managed PostgreSQL we configured in the [local demo](../javaee/README.md).  Please make sure to obtain the configuration strings from when you executed that part of the demo.
 
 * Log in to the WebLogic console as shown in the preceding step
 * Click on 'Lock and Edit'. 
-* Follow the same steps as in the local setup for [Connect WebLogic to the PostgreSQL Server](../javaee/README.md#connect-weblogic-to-the-postgresql-server).  Return to these steps after you have successfully tested the datasource.
+   * Click on Services -> Data Sources. Select New -> Generic Data Source. 
+   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
+   * Accept the defaults and click next.  Do not click Finish, even though you could do so.
+   * On the next screen select 'Logging Last Resource' and click next. 
+   * Enter the database name to be 'postgres'. 
+   * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
+   * Leave the port unchanged.
+   * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
+   * Enter the password as 'Secret123!'. Click next. 
+   * On the next screen, accept the defaults and click next. 
+   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
+   * Test the connection.   
+      * In the "Data Sources" pane, click "WebLogicCafeDB".
+      * Click Monitoring -> Testing
+      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
 ## Running the Application
 The next step is to get the application up and running. These steps assume you have already connected Eclipse to the locally running WebLogic Server.
 
 * Start Eclipse.
+* If you have not yet installed the Oracle WebLogic Server Tools, do so now.
+   * Go to the 'Servers' panel, secondary click. Select New -> Server
+   * Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
+* If you have not yet connected Eclipse to your local WebLogic server, do so now.
+   * go to the 'Servers' panel again, secondary click. 
+      * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
+      * Choose the defaults and hit 'Next'. 
+      * Enter where you have WebLogic installed.  Even though the dialog says "WebLogic home" you may have to enter the full path to the `wlserver` directory within the `Oracle_Home` directory.
+      * Enter where the Oracle JDK is installed.  Click next. 
+      * For the domain directory, hit Create -> Create Domain. 
+      * For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.  If Eclipse asks to create a master password hint, do so.  Consider using `<your suffix>` for the questions and answers.
 * Go to the 'Servers' panel, secondary click. 
 * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
 * For "Server's host name" use the hostname `<admin server DNS name>`.
@@ -48,6 +109,13 @@ The next step is to get the application up and running. These steps assume you h
 * Click "Test connection".  If "Test connection succeeded!" appears, click Ok and you may continue.  Otherwise, troubleshoot and resolve the reason for the connection failure.
 * 'Finish'.
 * You have already built opened the application and built it locally in the IDE when you executed the [local demo](../javaee/README.md).
+
+### Open weblogic-cafe in the IDE
+* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
+* Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
+* Accept the rest of the defaults and click "finish".
+* Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.
+   * You must see `BUILD SUCCESS` in the Eclipse console in order to proceed.  If you do not, troubleshoot the build problem and resolve it.  Once the application has successfully built, you may continue.
 
 ### Deploying the Application
 Ensure that the deployment action from Eclipse will target the WebLogic Cluster running on Azure.
