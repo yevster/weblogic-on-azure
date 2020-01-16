@@ -95,7 +95,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Make sure to select "Always use this server when running this project" and click "Finish". Just accept the defaults and wait for the application to finish deploying.
 * Once the application runs, Eclise will open it up in a browser. The application is available at [http://localhost:7001/weblogic-cafe](http://localhost:8080/weblogic-cafe).
 
-## Content
+## Exploring the Application
 
 The application is composed of:
 
