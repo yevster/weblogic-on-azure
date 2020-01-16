@@ -44,25 +44,6 @@ when installing WebLogic on Azure
 
 Once you are done exploring all aspects of the demo (local and on Azure), you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
-## Connect WebLogic to the PostgreSQL Server
-
-* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
-   * Click on Services -> Data Sources. Select New -> Generic Data Source. 
-   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
-   * Accept the defaults and click next.  Do not click Finish, even though you could do so.
-   * On the next screen select 'Logging Last Resource' and click next. 
-   * Enter the database name to be 'postgres'. 
-   * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
-   * Leave the port unchanged.
-   * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
-   * Enter the password as 'Secret123!'. Click next. 
-   * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
-   * Test the connection.   
-      * In the "Data Sources" pane, click "WebLogicCafeDB".
-      * Click Monitoring -> Testing
-      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
-   
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
@@ -89,6 +70,25 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 ```
 
 * Go to the 'Servers' panel, secondary click on the registered WebLogic instance and select Start.  If the server does not start, put aside this workshop and troubleshoot why the server did not start.  Once the server is successfully started from Eclipse, you may continue.
+
+## Connect WebLogic to the PostgreSQL Server
+
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
+   * Click on Services -> Data Sources. Select New -> Generic Data Source. 
+   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
+   * Accept the defaults and click next.  Do not click Finish, even though you could do so.
+   * On the next screen select 'Logging Last Resource' and click next. 
+   * Enter the database name to be 'postgres'. 
+   * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
+   * Leave the port unchanged.
+   * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
+   * Enter the password as 'Secret123!'. Click next. 
+   * On the next screen, accept the defaults and click next. 
+   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
+   * Test the connection.   
+      * In the "Data Sources" pane, click "WebLogicCafeDB".
+      * Click Monitoring -> Testing
+      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
 ### Open weblogic-cafe in the IDE
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
