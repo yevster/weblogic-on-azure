@@ -37,7 +37,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 
 * Go to the [Azure portal](http://portal.azure.com).
 * Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
-* In "Resource group" select "Create new" and enter weblogic-cafe-group-`<your suffix>`
+* In "Resource group" select weblogic-cafe-group-`<your suffix>`.
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
 * Specify the Admin username to be postgres. 
 * Specify the Password to be Secret123!. 
