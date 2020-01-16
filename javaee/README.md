@@ -1,7 +1,7 @@
 # Basic Java EE CRUD Application
-This is the basic Java EE 7 application used throughout the WebLogic on Azure demos. It is a simple CRUD application. It uses Maven and Java EE 7 (JAX-RS, EJB, CDI, JPA, JSF, Bean Validation).
+This is a basic Java EE 7 application used throughout the WebLogic on Azure demos. It is a simple CRUD application. It uses Maven and Java EE 7 (JAX-RS, EJB, CDI, JPA, JSF, Bean Validation).
 
-We use Eclipse but you can use any Maven capable IDE such as NetBeans. We use Postgres but you can use any relational database such as MySQL or SQL Server.
+We use Eclipse but you can use any Maven and WebLogic capable IDE such as NetBeans. We use Postgres but you can use any relational database such as MySQL or SQL Server.
 
 ## Setup
 
@@ -35,12 +35,39 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Toggle "Disable SSL connection enforcement" to "off". 
    * Hit Add client IP. This allows connection to the database from the IP you are currently using to access Azure.  As a precaution, verify the IP entered is actually your IP.  You can do this by googling "what is my ip".  Hit Save.
 
-Once you are done exploring the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+We will use this same database in the Azure portions of the demo
+([simple](../simple/README.md) and [cluster](../cluster/README.md)).
+Please save aside the configuration strings so you can reference them
+when installing WebLogic on Azure
 
+## Cleaning Up
+
+Once you are done exploring all aspects of the demo (local and on Azure), you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+
+### Connect WebLogic to the PostgreSQL Server
+
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
+   * Click on Services -> Data Sources. Select New -> Generic Data Source. 
+   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
+   * Accept the defaults and click next.  Do not click Finish, even though you could do so.
+   * On the next screen select 'Logging Last Resource' and click next. 
+   * Enter the database name to be 'postgres'. 
+   * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
+   * Leave the port unchanged.
+   * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
+   * Enter the password as 'Secret123!'. Click next. 
+   * On the next screen, accept the defaults and click next. 
+   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
+   * Test the connection.   
+      * In the "Data Sources" pane, click "WebLogicCafeDB".
+      * Click Monitoring -> Testing
+      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
+   
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
-* Go to the 'Servers' panel, secondary click. Select New -> Server -> Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
+* Go to the 'Servers' panel, secondary click. Select New -> Server
+* Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
 * After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, secondary click. 
    * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
    * Choose the defaults and hit 'Next'. 
@@ -62,28 +89,16 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 ```
 
 * Go to the 'Servers' panel, secondary click on the registered WebLogic instance and select Start.  If the server does not start, put aside this workshop and troubleshoot why the server did not start.  Once the server is successfully started from Eclipse, you may continue.
-* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
-   * Click on Services -> Data Sources. Select New -> Generic Data Source. 
-   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
-   * Accept the defaults and click next. 
-   * On the next screen select 'Logging Last Resource' and click next. 
-   * Enter the database name to be 'postgres'. 
-   * Enter the host name as 'weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com'.
-   * Leave the port unchanged.
-   * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
-   * Enter the password as 'Secret123!'. Click next. 
-   * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer and click Finish.
-   * Test the connection.   
-      * In the "Data Sources" pane, click "WebLogicCafeDB".
-      * Click Monitoring -> Testing
-      * Select AdminServer and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
-   
-* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.
+
+### Open weblogic-cafe in the IDE
+* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
 * Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
 * Accept the rest of the defaults and click "finish".
 * Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.
    * You must see `BUILD SUCCESS` in the Eclipse console in order to proceed.  If you do not, troubleshoot the build problem and resolve it.  Once the application has successfully built, you may continue.
+
+### Deploying the Application
+
 * It is now time to run the application. Secondary click the application -> Run As -> Run on Server. 
    * Make sure to select "Always use this server when running this project" and click "Finish". Just accept the defaults and wait for the application to finish deploying.
 * Once the application runs, Eclise will open it up in a browser. The application is available at [http://localhost:7001/weblogic-cafe](http://localhost:8080/weblogic-cafe).
@@ -159,7 +174,7 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 * upload completely sent off: 104 out of 104 bytes
 < HTTP/1.1 201 Created
 < Date: Fri, 10 Jan 2020 22:17:55 GMT
-< Location: http://localhost:7001/200
+< Location: http://localhost:7001/weblogic-cafe/rest/coffees/200
 < Content-Length: 0
 < X-ORACLE-DMS-ECID: 89fd1d3f-df20-4336-9f81-f1edc0ccab49-00000029
 < X-ORACLE-DMS-RID: 0

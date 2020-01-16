@@ -17,8 +17,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import cafe.model.CafeRepository;
 import cafe.model.entity.Coffee;
@@ -31,7 +33,7 @@ public class CafeResource {
 
 	@Inject
 	private CafeRepository cafeRepository;
-
+	
 	@GET
 	@Produces({ MediaType.APPLICATION_XML })
 	public List<Coffee> getAllCoffees() {
@@ -40,10 +42,11 @@ public class CafeResource {
 
 	@POST
 	@Consumes({ MediaType.APPLICATION_XML })
-	public Response createCoffee(Coffee coffee) {
+	public Response createCoffee(Coffee coffee, @Context UriInfo uriInfo) {
 		try {
 			coffee = this.cafeRepository.persistCoffee(coffee);
-			return Response.created(URI.create("/" + coffee.getId())).build();
+			String path = uriInfo.getAbsolutePath() + "/" + coffee.getId();
+			return Response.created(URI.create(path)).build();
 		} catch (PersistenceException e) {
 			logger.log(Level.SEVERE, "Error creating coffee {0}: {1}.", new Object[] { coffee, e });
 			throw new WebApplicationException(e, Response.Status.INTERNAL_SERVER_ERROR);
