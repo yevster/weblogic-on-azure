@@ -105,6 +105,10 @@ The application is composed of:
 	- **_GET all_**: protocol://hostname:port/weblogic-cafe/rest/coffees
 	- **_POST_** to add a new element at: protocol://hostname:port/weblogic-cafe/rest/coffees
 	- **_DELETE_** to delete an element at: protocol://hostname:port/weblogic-cafe/rest/coffees/{id}
+	
+- **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
+
+Feel free to take a minute to explore the application.
     
 Some sample interactions:
 
@@ -174,10 +178,6 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
-
-- **A JSF Client:** protocol://hostname:port/weblogic-cafe/index.xhtml
-
-Feel free to take a minute to explore the application.
 
 ## Cleaning Up
 
