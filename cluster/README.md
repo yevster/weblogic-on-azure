@@ -72,7 +72,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
       * Click Monitoring -> Testing
       * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
-## Running the Application
+## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running.
 
 * Start Eclipse.
@@ -109,7 +109,7 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
 * In the azure portal go to 'All resources'.
 * Find and click on any of the WebLogic worker nodes (for example 'mspVM1'). Copy it's DNS name. The application will be available at http://`<node server DNS name>`:8001/weblogic-cafe.
 
-## Content
+## Exploring the Application
 
 The application is composed of:
 
