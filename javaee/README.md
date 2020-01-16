@@ -97,7 +97,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 * Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.
    * You must see `BUILD SUCCESS` in the Eclipse console in order to proceed.  If you do not, troubleshoot the build problem and resolve it.  Once the application has successfully built, you may continue.
 
-### Deploying the Application
+## Deploying the Application
 
 * It is now time to run the application. Secondary click the application -> Run As -> Run on Server. 
    * Make sure to select "Always use this server when running this project" and click "Finish". Just accept the defaults and wait for the application to finish deploying.
