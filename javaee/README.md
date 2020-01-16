@@ -188,4 +188,4 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 
 Feel free to take a minute to explore the application.
 
-When you are done exploring, it's time to deploy the demo to azure.  Return to [home of this repository](../README.md).
+When you are done exploring, it's time to deploy the demo to Azure.  Return to the [home of this repository](../README.md).
