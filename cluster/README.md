@@ -55,13 +55,9 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Toggle "Disable SSL connection enforcement" to "off". 
    * Hit Save.
 
-### Connect WebLogic to the PostgreSQL Server
+## Connect WebLogic to the PostgreSQL Server
 
-We will be using the fully managed PostgreSQL offering in Azure for this demo. We will set it up next. 
-
-We will be using the same fully managed PostgreSQL we configured in the [local demo](../javaee/README.md).  Please make sure to obtain the configuration strings from when you executed that part of the demo.
-
-* Log in to the WebLogic console as shown in the preceding step
+* Log in to the WebLogic console at http://`<admin server DNS name>`:7001/console.
 * Click on 'Lock and Edit'. 
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
    * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
