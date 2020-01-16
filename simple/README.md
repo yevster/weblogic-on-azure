@@ -55,9 +55,6 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Toggle "Disable SSL connection enforcement" to "off". 
    * Hit Save.
 
-Please save aside the configuration strings so you can reference them
-when installing WebLogic on Azure
-
 ### Connect WebLogic to the PostgreSQL Server
 
 We will be using the same fully managed PostgreSQL we configured in the [local demo](../javaee/README.md).  Please make sure to obtain the configuration strings from when you executed that part of the demo.
