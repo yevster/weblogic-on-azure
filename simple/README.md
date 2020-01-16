@@ -9,6 +9,29 @@ This demo shows how you can deploy a Java EE application to Azure using a simple
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
+## Create the WebLogic Instance on Azure
+The next step is to get WebLogic up and running on a virtual machine. Follow the steps below to do so.
+* Go to the [Azure portal](http://portal.azure.com).
+* Click 'Create a resource'. In the search box, enter 'weblogic' and press enter. 
+* Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'.
+* In the the basics blade, just accept the defaults. 
+* The steps in this section use `<your suffix>`.  The suffix must be different from what you used in [the local portion of the demo](../javaee/README.md)
+* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
+* Choose the default for the virtual machine size and hit OK. 
+* In the "Credentials for Server Creation" use these values
+   * For the "admin account of VMs", enter 'Secret123456'. 
+   * Enter your OTN/Oracle.com username and password (you can create an account for free). 
+   * For the "Password for WebLogic Administrator", enter 'Secret123456'. 
+   * Click OK. 
+   * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
+   * On the Summary blade, click OK. On the final screen, click Create.
+* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
+* Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
+
+## Cleaning Up
+
+Once you are done exploring all aspects of the demo (local and remote), you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
+
 ## Start Managed PostgreSQL on Azure
 We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
 
@@ -37,30 +60,6 @@ We will use this same database in the other portions of the demo
 ([javaee](../javaee/README.md) and [cluster](../cluster/README.md)).
 Please save aside the configuration strings so you can reference them
 when installing WebLogic on Azure
-
-
-## Create the WebLogic Instance on Azure
-The next step is to get WebLogic up and running on a virtual machine. Follow the steps below to do so.
-* Go to the [Azure portal](http://portal.azure.com).
-* Click 'Create a resource'. In the search box, enter 'weblogic' and press enter. 
-* Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'.
-* In the the basics blade, just accept the defaults. 
-* The steps in this section use `<your suffix>`.  The suffix must be different from what you used in [the local portion of the demo](../javaee/README.md)
-* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
-* Choose the default for the virtual machine size and hit OK. 
-* In the "Credentials for Server Creation" use these values
-   * For the "admin account of VMs", enter 'Secret123456'. 
-   * Enter your OTN/Oracle.com username and password (you can create an account for free). 
-   * For the "Password for WebLogic Administrator", enter 'Secret123456'. 
-   * Click OK. 
-   * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
-   * On the Summary blade, click OK. On the final screen, click Create.
-* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
-* Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
-
-## Cleaning Up
-
-Once you are done exploring all aspects of the demo (local and remote), you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
 ### Connect WebLogic to the PostgreSQL Server
 
