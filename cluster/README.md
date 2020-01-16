@@ -82,33 +82,22 @@ The next step is to get the application up and running.
 * Start Eclipse.
 * If you have not yet installed the Oracle WebLogic Server Tools, do so now.
    * Go to the 'Servers' panel, secondary click. Select New -> Server
-   * Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted.  If so, comply with the request.
-* If you have not yet connected Eclipse to your local WebLogic server, do so now.
-   * go to the 'Servers' panel again, secondary click. 
-      * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
-      * Choose the defaults and hit 'Next'. 
-      * Enter where you have WebLogic installed.  Even though the dialog says "WebLogic home" you may have to enter the full path to the `wlserver` directory within the `Oracle_Home` directory.
-      * Enter where the Oracle JDK is installed.  Click next. 
-      * For the domain directory, hit Create -> Create Domain. 
-      * For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.  If Eclipse asks to create a master password hint, do so.  Consider using `<your suffix>` for the questions and answers.
+   * Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted. If so, comply with the request.
 * Go to the 'Servers' panel, secondary click. 
 * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
-* For "Server's host name" use the hostname `<admin server DNS name>`.
-* Click next.
 * Choose remote, for the remote host enter `<admin server DNS name>`
 * Enter the WebLogic admin username/password from above.
 * Click "Test connection".  If "Test connection succeeded!" appears, click Ok and you may continue.  Otherwise, troubleshoot and resolve the reason for the connection failure.
 * 'Finish'.
-* You have already built opened the application and built it locally in the IDE when you executed the [local demo](../javaee/README.md).
 
-### Open weblogic-cafe in the IDE
+## Open weblogic-cafe in the IDE
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
 * Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
 * Accept the rest of the defaults and click "finish".
 * Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.
    * You must see `BUILD SUCCESS` in the Eclipse console in order to proceed.  If you do not, troubleshoot the build problem and resolve it.  Once the application has successfully built, you may continue.
 
-### Deploying the Application
+## Deploying the Application
 Ensure that the deployment action from Eclipse will target the WebLogic Cluster running on Azure.
 * Secondary click on the weblogic-cafe in the Project Explorer and choose Properties.
 * Click on "Server" in the left navigation pane.
@@ -116,12 +105,12 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
 * Go to the 'Servers' panel, find the WebLogic cluster instance, secondary click -> Properties -> WebLogic -> Publishing -> Advanced. 
 * Remove 'admin' as target by clicking on the red X. 
 * Add a new target by clicking green plus.
-   * Click on the little menu icon that appears near the red X and select 'cluster1' in the dialog that appears. Click Ok.
+   * Click on the little menu icon that appears near the red X and select 'cluster1' in the dialog that appears. Click OK.
    * Click Apply and close. 
 * Secondary click on weblogic-cafe in the Project Explorer and choose Run As -> Run on Server.  
    * If a dialog appears saying "Select which server to use", select the cluster one, check the "Always use this server when running this project, and click Finish.
 * Once the application runs, Eclise will try to open it up in a browser. The browser will fail with a 404. This is normal. We delibarately did not deploy the appllication to the admin server.
-* In the azure portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
+* In the azure portal go to 'All resources'.
 * Find and click on any of the WebLogic worker nodes (for example 'mspVM1'). Copy it's DNS name. The application will be available at http://`<node server DNS name>`:8001/weblogic-cafe.
 
 ## Content
