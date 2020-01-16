@@ -8,9 +8,9 @@ The scenarios demonstrated include:
 * Deploying a Java EE application on Azure using a simple instance of WebLogic using a marketplace solution. The [simple](/simple) folder shows how this is done.
 * Deploying a Java EE application on Azure into a WebLogic cluster using a marketplace solution. The [cluster](/cluster) folder shows how this is done.
 
-The authors recommend doing the samples in this order, but the text is
+We recommend doing the samples in the following order, but the text is
 written with sufficient redundancy so that you can do them in any
-order.  Just be advised that you may have to skip over sections that
+order. Just be advised that you may have to skip over sections that
 you already completed if you jump around in this way.
 
 * [javaee](/javaee)
