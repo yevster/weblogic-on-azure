@@ -57,8 +57,6 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 
 ## Connect WebLogic to the PostgreSQL Server
 
-We will be using the same fully managed PostgreSQL we configured in the [local demo](../javaee/README.md).  Please make sure to obtain the configuration strings from when you executed that part of the demo.
-
 * Log in to the WebLogic console as shown in the preceding step
 * Click on 'Lock and Edit'. 
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
