@@ -35,11 +35,6 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Toggle "Disable SSL connection enforcement" to "off". 
    * Hit Add client IP. This allows connection to the database from the IP you are currently using to access Azure.  As a precaution, verify the IP entered is actually your IP.  You can do this by googling "what is my ip".  Hit Save.
 
-We will use this same database in the Azure portions of the demo
-([simple](../simple/README.md) and [cluster](../cluster/README.md)).
-Please save aside the configuration strings so you can reference them
-when installing WebLogic on Azure
-
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
