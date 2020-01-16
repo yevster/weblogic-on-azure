@@ -15,7 +15,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Click 'Create a resource'. In the search box, enter 'weblogic'. 
 * Select 'Oracle WebLogic Server 12.2.1.3 Cluster'. Hit 'Create'.
 * In the basics blade, just accept the defaults.
-* The steps in this section use `<your suffix>`.  The suffix must be different from what you used in [the local portion of the demo](../javaee/README.md)
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique.
 * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
 * Choose the default for the virtual machine size and hit OK. 
 * In the "Credentials for Server Creation" use these values
@@ -36,7 +36,7 @@ Once you are done exploring all aspects of the demo (local and remote), you shou
 We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
-* The steps in this section use `<your suffix>`.  The suffix could be your first name such as "reza".  It should be short and reasonably unique.
+* The steps in this section use `<your suffix>`.
 * Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
 * In "Resource group" select "Create new" and enter weblogic-cafe-group-`<your suffix>`
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
