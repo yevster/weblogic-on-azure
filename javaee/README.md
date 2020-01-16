@@ -40,10 +40,6 @@ We will use this same database in the Azure portions of the demo
 Please save aside the configuration strings so you can reference them
 when installing WebLogic on Azure
 
-## Cleaning Up
-
-Once you are done exploring all aspects of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
-
 ## Running the Application
 The next step is to get the application up and running. Follow the steps below to do so.
 * Start Eclipse.
@@ -103,6 +99,10 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Select the local WebLogic instance.
    * Make sure to select "Always use this server when running this project" and click "Finish". Just accept the defaults and wait for the application to finish deploying.
 * Once the application runs, Eclise will open it up in a browser. The application is available at [http://localhost:7001/weblogic-cafe](http://localhost:8080/weblogic-cafe).
+
+## Cleaning Up
+
+Once you are done exploring all aspects of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
 
 ## Content
 
