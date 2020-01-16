@@ -36,7 +36,6 @@ Once you are done exploring all aspects of the demo, you should delete the weblo
 We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
-* The steps in this section use `<your suffix>`.
 * Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
 * In "Resource group" select "Create new" and enter weblogic-cafe-group-`<your suffix>`
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
