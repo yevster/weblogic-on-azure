@@ -15,7 +15,7 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
 * Click 'Create a resource'. In the search box, enter 'weblogic' and press enter. 
 * Select 'Oracle WebLogic Server 12.2.1.3 With Admin Server'. Hit 'Create'.
 * In the the basics blade, just accept the defaults. 
-* The steps in this section use `<your suffix>`.  The suffix must be different from what you used in [the local portion of the demo](../javaee/README.md)
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza". It should be short and reasonably unique.
 * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
 * Choose the default for the virtual machine size and hit OK. 
 * In the "Credentials for Server Creation" use these values
