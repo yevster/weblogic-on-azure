@@ -25,7 +25,7 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
    * Click OK. 
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the Summary blade, click OK. On the final screen, click Create.
-* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
+* It will take some time for the WebLogic configuration to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
 * Find and click on adminServerVM. Copy the DNS name for the virtual machine. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
 ## Cleaning Up
