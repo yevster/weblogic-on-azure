@@ -72,7 +72,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
       * Click Monitoring -> Testing
       * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
-## Setting up WebLogic in Eclipse
+## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running. 
 
 * Start Eclipse.
