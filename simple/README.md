@@ -101,7 +101,7 @@ Ensure that the deployment action from Eclipse will target the WebLogic Server r
 * Secondary click on weblogic-cafe in the Prjoect Explorer and choose Run As -> Run on Server.
 * Once the application runs, Eclise will open it up in a browser. The application is available at http://`<admin server DNS name>`:7001/weblogic-cafe.
 
-## Content
+## Exploring the Application
 
 The application is composed of:
 
