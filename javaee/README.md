@@ -95,10 +95,6 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Make sure to select "Always use this server when running this project" and click "Finish". Just accept the defaults and wait for the application to finish deploying.
 * Once the application runs, Eclise will open it up in a browser. The application is available at [http://localhost:7001/weblogic-cafe](http://localhost:8080/weblogic-cafe).
 
-## Cleaning Up
-
-Once you are done exploring all aspects of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
-
 ## Content
 
 The application is composed of:
@@ -183,4 +179,6 @@ Note: Unnecessary use of -X or --request, POST is already inferred.
 
 Feel free to take a minute to explore the application.
 
-When you are done exploring, it's time to deploy the demo to Azure.  Return to the [home of this repository](../README.md).
+## Cleaning Up
+
+Once you are done exploring all aspects of the demo, you should delete the weblogic-cafe-group-`<your suffix>` resource group. You can do this by going to the portal, going to resource groups, finding and clicking on weblogic-cafe-group-`<your suffix>` and hitting delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
