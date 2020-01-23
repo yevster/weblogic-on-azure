@@ -65,7 +65,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
    * Enter the password as 'Secret123!'. Click next. 
    * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.
+   * On the "Select Targets" screen, select cluster1 and click Finish.
    * Click "Activate Changes" at this point.
    * Test the connection.   
       * In the "Data Sources" pane, click "WebLogicCafeDB".
