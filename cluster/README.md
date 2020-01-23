@@ -16,8 +16,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Select 'Oracle WebLogic Server 12.2.1.3 Cluster'. Hit 'Create'.
 * In the basics blade, just accept the defaults.
 * The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique.
-* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
-* Choose the default for the virtual machine size and hit OK. 
+* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit Next. 
+* Choose the default for the virtual machine size and hit Next. 
 * In the "Credentials for Cluster Creation" use these values
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * Enter your OTN/Oracle.com username and password (you can create an account for free). 
