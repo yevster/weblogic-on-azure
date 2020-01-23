@@ -19,7 +19,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
 * Choose the default for the virtual machine size and hit OK. 
 * In the "Credentials for Cluster Creation" use these values
-   * For the "admin account of VMs", enter 'Secret123456'. 
+   * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * Enter your OTN/Oracle.com username and password (you can create an account for free). 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'. 
    * Click OK. 
