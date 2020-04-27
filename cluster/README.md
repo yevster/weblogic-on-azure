@@ -48,7 +48,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 * Find and click on weblogic-cafe-db-`<your suffix>`. 
 * Under Settings, open the connection security panel.
    * Toggle "Allow access to Azure services" to "on"
-   * Toggle "Disable SSL connection enforcement" to "off". 
+   * Make sure to turn off SSL connection enforcement.
    * Hit Save.
 
 ## Connect WebLogic to the PostgreSQL Server
