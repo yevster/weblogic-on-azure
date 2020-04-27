@@ -32,7 +32,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 * Find and click on weblogic-cafe-db-`<your suffix>`. 
 * Under Settings, open the connection security panel.
    * Toggle "Allow access to Azure services" to "on"
-   * Toggle "Disable SSL connection enforcement" to "off". 
+   * Make sure to turn off SSL connection enforcement.
    * Hit Add client IP. This allows connection to the database from the IP you are currently using to access Azure.  As a precaution, verify the IP entered is actually your IP.  You can do this by googling "what is my ip".  Hit Save.
 
 ## Setting Up WebLogic
