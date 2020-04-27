@@ -22,7 +22,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * Enter your OTN/Oracle.com username and password (you can create an account for free). 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'. 
-   * Click Next. 
+   * Click Next. Choose the defaults for the network settings.
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
