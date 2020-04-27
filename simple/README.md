@@ -65,12 +65,12 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
    * Enter the password as 'Secret123!'. Click next. 
    * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  
+   * On the "Select Targets" screen, select admin and click Finish.  
    * Click "Activate Changes" at this point.
    * Test the connection.   
       * In the "Data Sources" pane, click "WebLogicCafeDB".
       * Click Monitoring -> Testing
-      * Select AdminServer, admin, or any of the nodes in the cluster and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
+      * Select admin and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server admin was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
 ## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running. 
