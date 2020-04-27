@@ -74,8 +74,8 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * Leave the port unchanged.
    * Enter the user name as 'postgres@weblogic-cafe-db-`<your suffix>`'. 
    * Enter the password as 'Secret123!'. Click next. 
-   * On the next screen, accept the defaults and click next. 
-   * On the "Select Targets" screen, select AdminServer, admin, or cluster1 and click Finish.  If you are executing these steps on a WebLogic running on Azure, you must click "Activate Changes" at this point.
+   * On the next screen, accept the defaults and click next.
+   * On the "Select Targets" screen, select AdminServer and click Finish.
    * Test the connection.   
       * In the "Data Sources" pane, click "WebLogicCafeDB".
       * Click Monitoring -> Testing
