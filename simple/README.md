@@ -17,7 +17,7 @@ The next step is to get WebLogic up and running on a virtual machine. Follow the
 * In the the basics blade, just accept the defaults. 
 * The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza". It should be short and reasonably unique.
 * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . Hit OK. 
-* Choose the default for the virtual machine size and hit OK. 
+* Next choose the default for the virtual machine size. 
 * In the "Credentials for Server Creation" use these values
    * For the "admin account of VMs", enter 'Secret123456'. 
    * Enter your OTN/Oracle.com username and password (you can create an account for free). 
